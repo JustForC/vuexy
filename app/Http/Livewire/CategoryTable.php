@@ -14,6 +14,7 @@ class CategoryTable extends Component
 
     public $sortType = "asc";
     public $sortName = "id";
+    public $pagination;
 
     public $searchKey;
     
