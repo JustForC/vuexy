@@ -33,7 +33,7 @@ class ProductCreate extends Component
 
     public function save(){
         $directory = '/upload/image/product/';
-        $filename = $this->name.'.'.$this->image->extension();
+        $filename = time().'.'.$this->image->extension();
         $this->image->storeAs('public'.$directory, $filename);
         $path = 'storage' . $directory . $filename;
 

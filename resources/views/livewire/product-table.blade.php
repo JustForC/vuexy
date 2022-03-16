@@ -8,6 +8,15 @@
             <option>25</option>
         </select>
     </fieldset>
+    <fieldset class="col-sm-3 form-group float-left">
+        <select wire:model="filterCategory" class="form-control" id="basicSelect">
+            <option>Choose Category</option>
+            <option value="All">Semua</option>
+            @foreach($categories as $category)
+                <option value="{{$category->name}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+    </fieldset>
     <fieldset class="col-xl-3 form-group position-relative has-icon-left float-right">
         <input wire:model="searchKey" type="text" class="form-control round" id="searchbar">
         <div class="form-control-position">
