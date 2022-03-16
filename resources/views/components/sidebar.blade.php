@@ -17,7 +17,7 @@
             </li>
             <li class=" nav-item"><a href="{{route('category.index')}}"><i class="fa fa-archive"></i><span class="menu-title" data-i18n="Category">Category</span></a>
             </li>
-            <li class=" nav-item"><a href="app-chat.html"><i class="fa fa-apple"></i><span class="menu-title" data-i18n="Product">Product</span></a>
+            <li class=" nav-item"><a href="{{route('product.index')}}"><i class="fa fa-apple"></i><span class="menu-title" data-i18n="Product">Product</span></a>
             </li>
         </ul>
     </div>

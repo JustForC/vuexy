@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,6 @@ Route::group(['prefix' => 'category', 'controller' => CategoryController::class,
     Route::get('/', 'index')->name('index');
 });
 
-Route::get('test', function(){
-    return view('dashboard.category.index');
+Route::group(['prefix' => 'product', 'controller' => ProductController::class, 'as' => 'product.'],function(){
+    Route::get('/', 'index')->name('index');
 });

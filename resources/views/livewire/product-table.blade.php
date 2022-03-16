@@ -20,22 +20,24 @@
                 <tr>
                     <th wire:click="sorting('id')">ID <span class="float-right"><i class="ficon fa fa-arrow-up @if($sortType == "desc" || $sortName != "id") fade @endif"></i><i class="ficon fa fa-arrow-down @if($sortType == "asc" || $sortName != "id") fade @endif"></i></span></th>
                     <th wire:click="sorting('name')">Name <span class="float-right"><i class="ficon fa fa-arrow-up @if($sortType == "desc" || $sortName != "name") fade @endif"></i><i class="ficon fa fa-arrow-down @if($sortType == "asc" || $sortName != "name") fade @endif"></i></span></th>
+                    <th wire:click="sorting('categories.name')">Category <span class="float-right"><i class="ficon fa fa-arrow-up @if($sortType == "desc" || $sortName != "categories.name") fade @endif"></i><i class="ficon fa fa-arrow-down @if($sortType == "asc" || $sortName != "categories.name") fade @endif"></i></span></th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($categories as $category)
+                @foreach($products as $product)
                     <tr>
-                        <th>{{$category->id}}</th>
-                        <td>{{$category->name}}</td>
+                        <th>{{$product->id}}</th>
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->category}}</td>
                         <td>
-                        <button wire:click="select({{$category->id}}, 'update')" type="button" class="btn btn-info">Edit</button>
-                        <button wire:click="select({{$category->id}}, 'delete')" type="button" class="btn btn-danger">Delete</button>
+                        <button wire:click="select({{$product->id}}, 'update')" type="button" class="btn btn-info">Edit</button>
+                        <button wire:click="select({{$product->id}}, 'delete')" type="button" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        {{$categories->links()}}
+        {{$products->links()}}
     </div>
 </div>

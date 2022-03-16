@@ -1,13 +1,13 @@
 <div>
     <div>
         <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel1">Delete Category</h4>
+            <h4 class="modal-title" id="myModalLabel1">Delete Product</h4>
             <button type="button" class="close" wire:click="closeModal()" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
-            Delete category {{$name}}?
+            Delete Product {{$name}}?
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-success" wire:click="closeModal()">Cancel</button>

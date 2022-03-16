@@ -8,7 +8,7 @@
                     </ul>
                     <ul class="nav navbar-nav bookmark-icons">
                         <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{route('category.index')}}" data-toggle="tooltip" data-placement="top" title="Category"><i class="ficon fa fa-archive"></i></a></li>
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-chat.html" data-toggle="tooltip" data-placement="top" title="Product"><i class="ficon fa fa-apple"></i></a></li>
+                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{route('product.index')}}" data-toggle="tooltip" data-placement="top" title="Product"><i class="ficon fa fa-apple"></i></a></li>
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">

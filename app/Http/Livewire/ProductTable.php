@@ -3,11 +3,12 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Category;
 use Livewire\WithPagination;
+use DB;
 
-class CategoryTable extends Component
+class ProductTable extends Component
 {
+    
     use WithPagination;
 
     public $modelId, $mode;
@@ -17,24 +18,28 @@ class CategoryTable extends Component
     public $paginationKey = 5;
 
     public $searchKey;
-    
-    protected $listeners = [
-        'refreshTable' => '$refresh'
-    ];
 
     public function render()
     {
-        $categories = Category::where('id' , 'LIKE', '%'.$this->searchKey.'%')
-                                ->orWhere('name', 'LIKE', '%'.$this->searchKey.'%')
-                                ->orderBy($this->sortName, $this->sortType)
-                                ->paginate($this->paginationKey);
-        return view('livewire.category-table')->with(['categories' => $categories]);
+        $products = DB::table('products')
+                        ->join('categories', 'products.category_id', '=', 'categories.id')
+                        ->where('products.name', 'LIKE', '%'.$this->searchKey.'%')
+                        ->orWhere('products.price', 'LIKE', '%'.$this->searchKey.'%')
+                        ->orWhere('categories.name', 'LIKE', '%'.$this->searchKey.'%')
+                        ->orderBy($this->sortName, $this->sortType)
+                        ->select('products.*', 'categories.name as category')
+                        ->paginate($this->paginationKey);
+        return view('livewire.product-table')->with(['products' => $products]);
     }
+    
+    protected $listeners = [
+        'refreshTable' => '$refresh'
+    ];  
 
     public function select($id, $mode){
         $this->modelId = $id;
         $this->mode = $mode;
-
+        // dd($id);
         if($this->mode == 'update'){
             $this->emit('modelID', $this->modelId);
             $this->dispatchBrowserEvent('showUpdate');
